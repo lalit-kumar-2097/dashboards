@@ -134,9 +134,12 @@
 
         #main-data{
             margin-top: 15px;
+            border-bottom: #7676 4.5px solid;
+            padding-bottom: 3rem;
         }
 
 
+      
         .type-img{
             color:rgb(255 255 255);
             display: inline-block;
@@ -302,8 +305,6 @@
             text-decoration: none;
         }
 
-
-
         .type-img{
             text-align: center;
             background: #399c38;
@@ -316,6 +317,10 @@
         .box p a:visited {
             color: #000; /* Same as normal, no purple */
             text-decoration: none;
+        }
+
+        #about-data{
+          margin-top: 2rem;
         }
 
   </style>
@@ -339,10 +344,46 @@
         </div>
     </section>
 
+    <section id="about-data" class="page-layout">
+        <div class="project-section" id="about-section"></div>
+        <div class="project-section" id="tech-section"></div>
+        <div class="project-section" id="features-section"></div>
+    </section>
+
+
+  <footer>Crafted by Lalit Kumar</footer>
 </main>
 
-<!-- <footer>Crafter by Lalit Kumar</footer> -->
+<script>
+    fetch('../../data/covid-19.json')
+  .then(response => response.json())
+  .then(data => {
+    // About
+    const about = document.getElementById('about-section');
+    about.innerHTML = `
+      <h2>About</h2>
+      <p>${data.about}</p>
+    `;
 
+    // Tech
+    const tech = document.getElementById('tech-section');
+    tech.innerHTML = `
+      <h2>Tech Stack</h2>
+      <ul>${data.tech.map(item => `<li>${item}</li>`).join('')}</ul>
+    `;
+
+    // Features
+    const features = document.getElementById('features-section');
+    features.innerHTML = `
+      <h2>Features</h2>
+      <ul>${data.features.map(feature => `<li>${feature}</li>`).join('')}</ul>
+    `;
+  })
+  .catch(error => {
+    console.error("Error loading covid-19.json:", error);
+  });
+
+</script>
+    
 </body>
 </html>
-
