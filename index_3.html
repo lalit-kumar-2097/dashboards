@@ -135,6 +135,7 @@
         #main-data{
             margin-top: 15px;
             border-bottom: #7676 4.5px solid;
+            padding-bottom: 3rem;
         }
 
 
@@ -304,8 +305,6 @@
             text-decoration: none;
         }
 
-
-
         .type-img{
             text-align: center;
             background: #399c38;
@@ -318,6 +317,10 @@
         .box p a:visited {
             color: #000; /* Same as normal, no purple */
             text-decoration: none;
+        }
+
+        #about-data{
+          margin-top: 2rem;
         }
 
   </style>
@@ -341,7 +344,7 @@
         </div>
     </section>
 
-    <section id="about-data">
+    <section id="about-data" class="page-layout">
         <div class="project-section" id="about-section"></div>
         <div class="project-section" id="tech-section"></div>
         <div class="project-section" id="features-section"></div>
@@ -349,7 +352,7 @@
 
 </main>
 
-<!-- <footer>Crafter by Lalit Kumar</footer> -->
+<footer>Crafter by Lalit Kumar</footer>
 
 <script>
     fetch('data/covid-19.json')
