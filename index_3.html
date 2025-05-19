@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/script.js' %}"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <title>Dashboard Repository</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+        body{
+            /* font: 15px/1.5 Arial, Helvetica sans-serif; */
+            font: 15px/1.5 Arial, Helvetica sans-serif;
+            padding: 0;
+            margin: 0;
+            background-color: #f4f4f4;    
+            padding-top: 110px;
+        }
+
+
+
+        /* Global */
+        .page-layout{
+            width: 60%;
+            margin: auto;
+        }
+
+
+        /* header{
+            background: #35424a;
+            color: #ffffff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;    
+        } */
+
+        header{
+            background: rgb(48, 97, 215);
+            color: #ffffff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #767676 4.5px solid;
+            font-family: Roboto;
+            font-size: x-large;
+            font-weight: 300;
+        }
+
+        h2 {
+            color: rgb(48, 97, 215);
+            background-color: #f4f4f4;
+            margin: auto;
+            font-family: Roboto;
+            font-size: xx-large;
+            font-weight: 300;
+        }
+
+        #branding{
+            padding-right: 10px;
+            padding-left: 10px;
+            display: inline-block;
+            color: rgb(48, 97, 215);
+            border: 0.7px solid #f4f4f4;
+            background-color: #f4f4f4;
+            border-radius: 4px;
+            margin: auto;
+            letter-spacing: 5px;
+
+        }
+
+        .container{
+            /* display: grid;
+            grid-template-columns: repeat(3, 1fr);            
+            grid-template-rows: repeat();
+            grid-gap: 1rem;
+            align-items: stretch; */
+            display: grid;
+            grid-template-columns: repeat(3, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            align-items: stretch; /* ensures each column aligns vertically */
+            padding: 20px;
+        }
+
+        .box{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            border: 0.7px solid grey;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: white;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .box img{
+            height: auto;
+            width: 100%;
+            margin: auto;
+            border-radius: 8px;
+            max-height: -webkit-fill-available;
+            border: 0.4px solid #f1f0ef;
+            background-color: white;
+        }
+
+        .box video{
+            height: auto;
+            width: 100%;
+            margin: auto;
+            max-height: -webkit-fill-available;
+        }
+
+
+        .box li{
+            list-style: none;
+        }
+
+        .photo{
+            height: auto;
+            width: 230px;
+            margin: auto;
+        }
+
+        #main-data{
+            margin-top: 15px;
+        }
+
+
+        .type-img{
+            color:rgb(255 255 255);
+            display: inline-block;
+            border-radius: 6px;    
+            border: 0.7px solid #ffffff;    
+            background-color: #399c38;
+            padding-right: 3px;
+            padding-left: 3px;
+        }
+
+        .type-video{
+            color:rgb(255 255 255);
+            display: inline-block;
+            border-radius: 6px;    
+            border: 0.7px solid #ffffff;    
+            background-color: #ff3636;
+            padding-right: 3px;
+            padding-left: 3px;
+        }
+
+        .type-img a:hover {
+            background: #218838;
+        }
+
+        li a{
+            color: white;
+        }
+
+        nav{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            min-height: 70px;
+            background-image: linear-gradient(to right, rgb(4 8 18), rgb(48,97,215));
+            /* background: rgb(48, 97, 215); */
+            color: #ffffff;
+            padding-top: 30px;
+            border-bottom: #767676 4.5px solid;
+            font-family: Roboto;
+            font-size: x-large;
+            font-weight: 300;
+        }
+
+
+        nav { 
+            z-index: 3;
+        }
+        
+        video-player {
+            z-index: 1;
+        }
+
+        #main-content label{
+            padding-bottom: 10px;
+            display: inline-block;
+            color: rgb(48, 97, 215);
+            border: 0.7px solid #f4f4f4;
+            background-color: #f4f4f4;
+            border-radius: 4px;
+            margin: auto;
+        }
+     
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1; /* This pushes the footer to the bottom if content is short */
+            display: flex;
+            flex-direction: column;
+            margin-top: 9em;
+
+        }
+
+        footer {
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(15deg, rgb(4 8 18), rgb(48,97,215));
+            color: white;
+        }
+
+        footer p {
+            padding: 0 10px;
+            display: inline-block;
+            color: rgb(48, 97, 215);
+            border: 0.7px solid #f4f4f4;
+            background-color: #f4f4f4;
+            border-radius: 4px;
+            margin: auto;
+            font-family: Roboto;
+            font-weight: 300;
+        }
+
+
+        .nav-img{
+            float:right;
+        }
+        .nav-img img{
+            float: right;
+            height: 100px;
+            width: auto;
+        }
+        .nav-img p{
+            direction: rtl;
+            font-size: initial;
+            letter-spacing: 4px;
+        }
+
+        @media screen and (max-width: 700px) {
+            .container{
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                /* grid-template-rows: repeat(4, 1fr); */
+                grid-template-rows: repeat();
+                grid-gap: 1rem;
+            }    
+        }
+
+
+        @media screen and (max-width: 1200px){
+            .nav-img{
+                display: contents
+            }
+            .page-layout{
+                display: inherit;
+            }
+        }
+
+
+        /* EXPERIMENT */
+        .box-link {
+        height: 100%;
+        }
+
+        .box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .description {
+            flex-grow: 1;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 1.4;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .description:visited {
+            color: #000; /* Same as normal, no purple */
+            text-decoration: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+
+        .type-img{
+            text-align: center;
+            background: #399c38;
+            color: white;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .box p a:visited {
+            color: #000; /* Same as normal, no purple */
+            text-decoration: none;
+        }
+
+    </style>
+
+
+
+</head>
+
+
+<body>
+    <main>
+        <nav>
+            <div class="page-layout">
+                <p id="branding">My Data Visualization Showcase</p>
+                <div class="nav-img">
+                <img src="static/img/nav-img1.png" alt="">
+                <p>A Lalit Kumar Production</p>
+                </div>            
+            </div>    
+        </nav>    
+
+
+        <section id="main-data">
+            <div class="page-layout">            
+                <h2>All Links</h2>
+                <div id="tool-container" class="container"></div>
+            </div>    
+        </section>
+    </main>
+
+    <footer> Crafted by Lalit Kumar </footer>
+
+    <script>
+        fetch('data/data.json')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById("tool-container");
+                data.forEach(tool => {
+                    container.innerHTML += `                                         
+                            <a href="${tool.link}" class="box-link">
+                            <div class="box">
+                                <div class="photo">
+                                <img src="${tool.img}">
+                                </div>
+                                <div class="description">
+                                ${tool.description}
+                                </div>
+                                <div class="type-img">
+                                ${tool.title}
+                                </div>
+                            </div>
+                            </a>
+                    `;
+                });
+            })
+            .catch(error => console.error("Error loading tools:", error));
+
+      
+      
+    </script>
+</body>
+</html>
