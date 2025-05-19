@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>    
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <script src="{% static 'js/script.js' %}"></script>
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-    <title>Dashboard Repository</title>
+<head>
+  <meta charset="UTF-8" />
+  <title>Covid-19 Dashboard</title>
+  <style>
+    /* body { font-family: Arial, sans-serif; margin: 20px; } */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+    table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+    th, td { 
+        border: 1px solid #ccc; 
+        padding: 8px; 
+        text-align: center;        
+    }
+    th { background-color: #f4f4f4; background-color: rgb(48, 97, 215);
+        color: white;}
+    tfoot td { font-weight: bold; background-color: #f9f9f9; background-color: rgb(48, 97, 215);
+        color: white;}
+    button { padding: 8px 16px; margin: 5px 0; }
+    .disabled { background-color: #ccc; cursor: not-allowed; }
+    h2 { margin-top: 40px; }
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-        body{
+    body{
             /* font: 15px/1.5 Arial, Helvetica sans-serif; */
             font: 15px/1.5 Arial, Helvetica sans-serif;
             padding: 0;
@@ -77,9 +86,8 @@
             grid-gap: 1rem;
             align-items: stretch; */
             display: grid;
-            grid-template-columns: repeat(3, minmax(200px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
             align-items: stretch; /* ensures each column aligns vertically */
             padding: 20px;
         }
@@ -104,7 +112,6 @@
             border-radius: 8px;
             max-height: -webkit-fill-available;
             border: 0.4px solid #f1f0ef;
-            background-color: white;
         }
 
         .box video{
@@ -127,9 +134,11 @@
 
         #main-data{
             margin-top: 15px;
+            border-bottom: #7676 4.5px solid;
         }
 
 
+      
         .type-img{
             color:rgb(255 255 255);
             display: inline-block;
@@ -193,7 +202,7 @@
             border-radius: 4px;
             margin: auto;
         }
-     
+
         html, body {
             height: 100%;
             margin: 0;
@@ -230,7 +239,6 @@
             font-family: Roboto;
             font-weight: 300;
         }
-
 
         .nav-img{
             float:right;
@@ -312,63 +320,67 @@
             text-decoration: none;
         }
 
-    </style>
-
-
-
+  </style>
 </head>
-
-
 <body>
-    <main>
-        <nav>
-            <div class="page-layout">
-                <p id="branding">My Data Visualization Showcase</p>
-                <div class="nav-img">
-                <img src="static/img/nav-img1.png" alt="">
-                <p>A Lalit Kumar Production</p>
-                </div>            
-            </div>    
-        </nav>    
+<main>
 
+    <nav>
+        <div class="page-layout">
+            <p id="branding">COVID-19 Dashboard Global Trend</p>
+            <div class="nav-img">
+            <img src="static/img/nav-img1.png" alt="">
+            <p>A Lalit Kumar Production</p>
+            </div>            
+        </div>    
+    </nav>    
 
-        <section id="main-data">
-            <div class="page-layout">            
-                <h2>All Links</h2>
-                <div id="tool-container" class="container"></div>
-            </div>    
-        </section>
-    </main>
+    <section id="main-data">
+        <div class="page-layout">
+            <div class='tableauPlaceholder' id='viz1746988388185' style='position: relative'><noscript><a href='#'><img alt='Covid 19 Dashboard ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;5B&#47;5BJB87BDR&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;5BJB87BDR' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;5B&#47;5BJB87BDR&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1746988388185');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1020px';vizElement.style.minHeight='587px';vizElement.style.maxHeight='887px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1020px';vizElement.style.minHeight='587px';vizElement.style.maxHeight='887px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.height='1277px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+        </div>
+    </section>
 
-    <footer> Crafted by Lalit Kumar </footer>
+    <section id="about-data">
+        <div class="project-section" id="about-section"></div>
+        <div class="project-section" id="tech-section"></div>
+        <div class="project-section" id="features-section"></div>
+    </section>
 
-    <script>
-        fetch('data/data.json')
-            .then(response => response.json())
-            .then(data => {
-                const container = document.getElementById("tool-container");
-                data.forEach(tool => {
-                    container.innerHTML += `                                         
-                            <a href="${tool.link}" class="box-link">
-                            <div class="box">
-                                <div class="photo">
-                                <img src="${tool.img}">
-                                </div>
-                                <div class="description">
-                                ${tool.description}
-                                </div>
-                                <div class="type-img">
-                                ${tool.title}
-                                </div>
-                            </div>
-                            </a>
-                    `;
-                });
-            })
-            .catch(error => console.error("Error loading tools:", error));
+</main>
 
-      
-      
-    </script>
+<!-- <footer>Crafter by Lalit Kumar</footer> -->
+
+<script>
+    fetch('data/covid-19.json')
+  .then(response => response.json())
+  .then(data => {
+    // About
+    const about = document.getElementById('about-section');
+    about.innerHTML = `
+      <h2>About</h2>
+      <p>${data.about}</p>
+    `;
+
+    // Tech
+    const tech = document.getElementById('tech-section');
+    tech.innerHTML = `
+      <h2>Tech Stack</h2>
+      <ul>${data.tech.map(item => `<li>${item}</li>`).join('')}</ul>
+    `;
+
+    // Features
+    const features = document.getElementById('features-section');
+    features.innerHTML = `
+      <h2>Features</h2>
+      <ul>${data.features.map(feature => `<li>${feature}</li>`).join('')}</ul>
+    `;
+  })
+  .catch(error => {
+    console.error("Error loading covid-19.json:", error);
+  });
+
+</script>
+    
 </body>
 </html>
