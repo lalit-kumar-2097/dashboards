@@ -3,12 +3,18 @@
         "img": "static/img/covid-19_dashboard.png",
         "description": "Explore this interactive Tableau dashboard showcasing COVID-19 trends from 2020 — track cases, recoveries, and regional patterns with clear visuals.",
         "link": "apps/covid-19/index.html",
-        "title": "Covid-19 Dashboard"
+        "title": "Covid-19 Dashboard",
+        "about": "An interactive dashboard built with Python and Plotly Dash to visualize global COVID-19 trends.",
+        "tech": ["Tableau", "Excel", "Python", "HTML"],
+        "features": ["Dynamic filters for country and time range", "Visualizations of confirmed cases, recoveries, and deaths", "Line and bar charts for comparative analysis"]
     },
     {
         "img": "static/img/ipl_dashboard.png",
         "description": "Dive into this dynamic Tableau dashboard analyzing IPL matches up to 2024 — featuring team stats, player performances, and season-wise trends.",
         "link": "apps/ipl_dashboard/index.html",
-        "title": "IPL Dashboard"
+        "title": "IPL Dashboard",
+        "about": "An interactive cricket analytics dashboard analyzing historical IPL (Indian Premier League) data to uncover team and player insights.",
+        "tech": ["Tableau", "Excel", "Python", "HTML/CSS"],
+        "features": ["Tabs for season overview, team stats, and player performance", "Filter by team, year, or player", "Interactive charts for runs, wickets, strike rates, and more"]
     }     
 ]
