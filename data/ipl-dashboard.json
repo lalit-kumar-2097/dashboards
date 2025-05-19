@@ -7,7 +7,8 @@
       "HTML/CSS"
     ],
     "features": [
-      "Tabs for season overview, team stats, and player performance", "Filter by team, year, or player",
-      "Interactive charts for runs, wickets, strike rates, and more"
+      "Year-wise analysis chart displaying the number of matches played by each team annually", 
+      "Shows the impact of toss outcomes on match results",
+      "Visualizes home ground win trends across IPL seasons, and more"
       ]
 }     
