@@ -1,0 +1,9 @@
+{
+  "about": "An interactive dashboard built with Python and Plotly Dash to visualize global COVID-19 trends.",
+  "tech": ["Tableau", "Excel", "Python", "HTML"],
+  "features": [
+    "Dynamic filters for country and time range",
+    "Visualizations of confirmed cases, recoveries, and deaths",
+    "Line and bar charts for comparative analysis"
+  ]
+}
