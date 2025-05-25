@@ -5,5 +5,15 @@
     "Dynamic filters for country and time range",
     "Visualizations of confirmed cases, recoveries, and deaths",
     "Line and bar charts for comparative analysis"
-  ]
+  ],
+  "storyline_title" : "🦠 COVID-19 Dashboard: Tracing the Global Pandemic's Path (2020)",
+  "storyline_data" : "Explore how the world grappled with the unprecedented COVID-19 outbreak in 2020 through this interactive dashboard. With focused visuals and crisp charts, this dashboard captures the global surge, daily case evolution, and mortality trends that defined a year of disruption and resilience.",
+  "heading_and_data" : {
+    "🔥 🌍 Global Heatmap: Tracking the Spread": "The heatmap offers a high-level view of COVID-19’s impact across nations. The darkest zones reflect the countries hit hardest by cases and deaths, while interactive filters let you isolate and examine specific regions.",
+    "📊 Daily Trends: Confirmed Cases, Deaths & Recoveries": "Line charts track the pandemic’s day-by-day movement—from the quiet start in early 2020 to global surges mid-year. Peaks, plateaus, and turning points are clearly illustrated, allowing users to spot the most intense phases of the outbreak.",
+    "📅 Timeline of Cases & Deaths" : "See the global case and death counts evolve over time. The dual-axis design makes it easy to compare the trajectory of infections with fatalities—highlighting the most critical periods and the overall direction of the pandemic curve.",
+    "🧭 Interactive Controls" : "Use the dashboard’s filters to zoom into specific countries, date ranges, or metrics. Whether you're examining total confirmed cases or looking at trends by month, the dashboard offers flexible exploration for meaningful insight."
+  },
+  "closing_title": "📌 Explore the Dashboard:",
+  "closing_data": "Perfect for data enthusiasts, educators, or anyone seeking a factual look back at COVID’s global footprint in 2020."
 }

@@ -67,6 +67,15 @@
             text-align: center;
         }
 
+        h3 {
+            color: rgb(48, 97, 215);
+            background-color: #f4f4f4;
+            margin: auto;
+            font-family: Roboto;
+            font-size: large;
+            font-weight: 400;            
+        }
+
         #branding{
             padding-right: 10px;
             padding-left: 10px;
@@ -348,6 +357,30 @@
             margin:auto !important;
         }
 
+        .section-border{
+            border-bottom: #7676 1.75px solid;
+        }
+
+        /* Storyline Section */
+        #storyline{
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        #storyline h2{
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        #heading_and_data{
+            margin-top: 1.75rem;
+        }
+
+        #storyline h3{
+            padding-top:2.2rem;
+        }
+
+
   </style>
 </head>
 <body>
@@ -369,6 +402,17 @@
         </div>
     </section>
 
+    
+    <section id="storyline" class="page-layout">
+        <div id="storyline_title"><h2></h2></div>
+        <div id="storyline_data"></div>
+        <div id="heading_and_data"></div>
+        <div id="closing_title"><h3></h3></div>
+        <div id="closing_data"></div>
+    </section>
+
+    <div class="section-border"></div>
+
     <section id="about-data" class="page-layout">
         <div class="project-section" id="about-section"></div>
         <div class="project-section" id="tech-section"></div>
@@ -380,7 +424,7 @@
 </main>
 
 <script>
-    fetch('../../data/ipl-dashboard.json')
+       fetch('../../data/ipl-dashboard.json')
   .then(response => response.json())
   .then(data => {
     // About
@@ -403,6 +447,36 @@
       <h2>Features</h2>
       <ul>${data.features.map(feature => `<li>${feature}</li>`).join('')}</ul>
     `;
+
+    // --- Storyline Section ---
+    document.querySelector('#storyline_title h2').textContent = data.storyline_title;
+    document.getElementById('storyline_data').textContent = data.storyline_data;
+
+    const headingDataContainer = document.getElementById('heading_and_data');
+    for (const [heading, content] of Object.entries(data.heading_and_data)) {
+    //   const headingElem = document.createElement('h3');
+    //   headingElem.textContent = heading;
+        const headingElem = document.createElement('div');
+        headingElem.className = 'data_heading';
+        const h3 = document.createElement('h3');
+        h3.textContent = heading;
+        headingElem.appendChild(h3);
+
+        const p = document.createElement('p');
+        p.textContent = content;
+        headingElem.appendChild(p);
+        // const contentElem = document.createElement('p');
+        // contentElem.textContent = content;
+
+
+
+        headingDataContainer.appendChild(headingElem);
+        // headingDataContainer.appendChild(contentElem);
+    }
+
+    document.querySelector('#closing_title h3').textContent = data.closing_title;
+    document.getElementById('closing_data').textContent = data.closing_data.replace('/n', '\n');
+    // --- End of Storyline Section ---
   })
   .catch(error => {
     console.error("Error loading covid-19.json:", error);

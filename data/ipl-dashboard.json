@@ -1,14 +1,25 @@
 {      
-    "about": "An interactive cricket analytics dashboard analyzing historical IPL (Indian Premier League) data to uncover team and player insights.",
-    "tech": [
-      "Tableau",
-      "Excel",
-      "Python",
-      "HTML/CSS"
+  "about": "An interactive cricket analytics dashboard analyzing historical IPL (Indian Premier League) data to uncover team and player insights.",
+  "tech": [
+    "Tableau",
+    "Excel",
+    "Python",
+    "HTML/CSS"
+  ],
+  "features": [
+    "Year-wise analysis chart displaying the number of matches played by each team annually", 
+    "Shows the impact of toss outcomes on match results",
+    "Visualizes home ground win trends across IPL seasons, and more"
     ],
-    "features": [
-      "Year-wise analysis chart displaying the number of matches played by each team annually", 
-      "Shows the impact of toss outcomes on match results",
-      "Visualizes home ground win trends across IPL seasons, and more"
-      ]
+  "storyline_title" : "🏏 IPL Dashboard: A 17-Season Journey Through Cricketing Brilliance (2008–2024)",
+  "storyline_data" : "Dive into 1,095 electrifying matches across 17 thrilling IPL seasons with this dynamic and interactive dashboard designed to uncover key trends, records, and strategic patterns that define the Indian Premier League.",
+  "heading_and_data" : {
+    "🔥 Who Reigns Supreme?": "At the top of the leaderboard, Mumbai Indians and Chennai Super Kings stand shoulder to shoulder with 5 championships each, showcasing the relentless dominance of these two cricketing powerhouses.",
+    "📊 Season-Wise Breakdown": "A look at the season-wise match count reveals the league's evolution, with consistency in match volume after 2011 and a few noticeable dips—perhaps impacted by external factors like the pandemic in 2020. The most recent seasons (2022–2024) reaffirm IPL's stability and continued fanfare.",
+    "🧠 Tactical Toss Decisions" : "Strategic toss decisions are vital in T20 cricket. Captains chose to field first 704 times, nearly double compared to choosing to bat, highlighting the chase-preference trend that has shaped modern IPL strategy.",
+    "💡 Toss Impact: Who Capitalizes the Most?" : "Not all teams convert toss wins into match victories equally. Mumbai Indians (78 wins) and Chennai Super Kings (75 wins) lead again—proving their ability to leverage toss outcomes into real match-winning advantage.",
+    "🏡 Home Advantage Mapped" : "Explore the vibrant “Home Ground Wins Across Years” visual to see how teams perform in their backyard. Larger and darker circles indicate stronger performances, showing which franchises truly defend their turf year after year."
+    },
+  "closing_title": "📌 Explore the Dashboard:",
+  "closing_data": "Filter through the IPL’s fascinating data story!/nWhether you're a cricket fan, a data enthusiast, or just curious about IPL trends, this dashboard brings statistics to life with clarity and visual appeal."
 }     
