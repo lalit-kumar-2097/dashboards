@@ -1,4 +1,18 @@
-[    
+[   {
+        "img": "static/img/telco_dashboard.png",
+        "description": "Discover why telecom users leave — this churn analysis project explores customer behavior and business impact with data-driven insights and interactive dashboards.",
+        "link": "apps/telco_churn/",
+        "title": "Customer Churn Analysis",
+        "about": "An end-to-end data science case study analyzing customer churn for a telecom provider using SQL, Python, Tableau, and Web technologies.",
+        "tech": ["SQL", "Python", "Pandas", "Scikit-learn", "CatBoost", "Tableau", "HTML/CSS/JS"],
+        "features": [
+            "Cleaned and transformed CSV data using SQL queries",
+            "Performed EDA in Python with Seaborn and Pandas",
+            "Trained and evaluated machine learning models (Logistic Regression, Random Forest, CatBoost)",
+            "Designed Tableau dashboards with KPIs, filters, and churn segments",
+            "Deployed a web interface with Business & Tech views hosted on GitHub Pages"
+        ]
+    }, 
     {
         "img": "static/img/covid-19_dashboard.png",
         "description": "Explore this interactive Tableau dashboard showcasing COVID-19 trends from 2020 — track cases, recoveries, and regional patterns with clear visuals.",
