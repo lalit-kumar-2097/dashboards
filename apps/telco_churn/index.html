@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jetbrains-mono@latest/css/jetbrains-mono.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fira-code@latest/css/fira-code.min.css">
-  <title>Visualization Showcase</title>
+  <title>Customer Churn Analysis</title>
   <style>
 
     
@@ -16,7 +16,7 @@
     body {
         margin:0;
         margin-top: 95px;
-        font-family: 'Segoe UI', sans-serif;
+        font-family: 'Roboto';
         background-color: #f4f4f4;
     }
 
@@ -47,6 +47,10 @@
         font-weight: 400;
         color: #0a840a;
     }
+    .strong-blue{
+        font-weight: 400;
+        color: #0044ff;
+    }
 
     hr.dashed {
         border-top: 1px solid #bbb;        
@@ -65,42 +69,26 @@
     }
 
     .code-comment {color: #888; /* Grayish green for comments */}
-
     .code-keyword {color: #800080; /* Purple for keywords like import, as */}
-
     .code-variable {color: #000; /* Black for variables/function names */}
-    
     .code-string {color: #d14; /* Red for strings */}
-
     .code-function-call {color: #000; /* Black for function calls */}
-
     .code-parentheses {color: #000; /* Black for parentheses */}
-
     .code-operator {color: #000; /* Black for operators */}
 
     /* SQL Code Syntax Highlighting */
-
     .sql-code-comment {color: #888; /* Grayish green for comments (e.g., -- or */}
-
     .sql-code-keyword {
         color: #800080; /* Purple for SQL keywords (e.g., SELECT, FROM, WHERE, INSERT, INTO, UPDATE, DELETE, CREATE, TABLE, ALTER, JOIN, ON, AND, OR, NOT, etc.) */
         font-weight: bold; /* Keywords often stand out more */
     }
-
     .sql-code-function {color: #0000FF; /* Blue for built-in SQL functions (e.g., COUNT, SUM, AVG, MAX, MIN, NOW, GETDATE, CONCAT, SUBSTRING) */}
-
     .sql-code-string {color: #f96d29; /* Red for string literals (e.g., 'text', '2023-01-01') */}
-
     .sql-code-number {color: #1a1aa6; /* A distinct color for numeric literals (e.g., 123, 45.67) */}
-
     .sql-code-identifier {color: #000; /* Black for database, table, column names (identifiers) */}
-
     .sql-code-operator {color: #000; /* Black for operators (=, <, >, >=, <=, <>, !=, +, -, *, /, LIKE, IN, BETWEEN, IS NULL) */}
-
     .sql-code-parentheses {color: #000; /* Black for parentheses ( ) */}
-
     .sql-code-datatype {color: #4B0082; /* Indigo/dark purple for data types (e.g., INT, VARCHAR, DATE, BOOLEAN, DECIMAL) */}
-
     .sql-code-alias {color: #006400; /* Dark green for aliases (e.g., AS alias_name) */}
 
     
@@ -255,6 +243,9 @@
         color: #333;
         font-size: 18px;
     }
+    .left-info-text ul{
+        list-style: none;
+    }
 
     .right-info-pic {
         flex: 1;
@@ -346,6 +337,10 @@
     
 
     @media (max-width: 600px) {
+        body {
+            margin-top: 150px; /* Adjust body margin for smaller navbar */
+        }
+
       .container {
         flex-direction: column;
         gap: 10px;
@@ -364,7 +359,159 @@
       .right-info img {
         width: 30px;
         height: 30px;
+        display:none; /* Hide image on small screens */
       }
+      .selected-section{
+        margin-top: 100px;
+      }
+    }
+
+
+      /* EXPERIMENTAL */
+    /* Additional Responsive CSS for mobile-friendliness */
+
+@media (max-width: 900px) {
+    /* Adjustments for tablets and smaller desktops */
+    .nav-container {
+        width: 90%; /* Slightly more padding on smaller screens */
+    }
+
+    .info-box {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        width: 90%; /* Adjust width for better fit */
+        padding: 15px;
+    }
+
+    .info-box .right-info-pic {
+        order: -1; /* Move image above text on smaller screens */
+        margin-bottom: 20px; /* Add space between image and text */
+    }
+
+    .info-box .right-info-pic img {
+        height: auto; /* Allow image to scale with width */
+        max-width: 100%; /* Ensure image doesn't overflow */
+    }
+
+    .grid-box-2,
+    .grid-box-3 {
+        grid-template-columns: 1fr; /* Stack cards on smaller screens */
+        width: 90%; /* Adjust width for better fit */
+    }
+
+    .box {
+        padding: 15px;
+    }
+
+    .dashboard_tableau {
+        width: 90%; /* Adjust width for better fit */
+        padding: 1rem;
+    }
+
+    .heading_h2 {
+        width: 90%; /* Adjust width for better fit */
+        padding: 1rem 0;
+    }
+
+    h2 {
+        font-size: x-large; /* Slightly smaller heading for tablets */
+    }
+
+    .left-info-text h3 {
+        font-size: 18px;
+    }
+
+    .left-info-text p,
+    .box p,
+    .box li {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Existing mobile adjustments from your file, plus some additions */
+    body {
+        margin-top: 80px; /* Adjust body margin for smaller navbar */
+    }
+
+    .navbar {
+        padding: 15px 0;
+    }
+
+    .nav-container {
+        flex-direction: column; /* Stack nav items vertically */
+        gap: 10px;
+        text-align: center;
+    }
+
+    .left-button {
+        font-size: 12px;
+        padding: 6px 12px;
+        letter-spacing: 3px;
+    }
+
+    .right-info {
+        flex-direction: column; /* Stack right info items */
+        gap: 5px;
+    }
+
+    .right-info-text {
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    .right-info img {
+        width: 30px;
+        height: 40px;
+    }
+
+    .selector-container {
+        grid-template-columns: 1fr; /* Stack buttons vertically */
+    }
+
+    .btn {
+        font-size: medium;
+        letter-spacing: 1.5px;
+    }
+
+    .btn:first-child::after {
+        content: none; /* Remove vertical border when stacked */
+    }
+
+    h2 {
+        font-size: large; /* Smaller heading for phones */
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+    }
+
+    .info-box,
+    .grid-box-2,
+    .grid-box-3,
+    .dashboard_tableau,
+    .heading_h2 {
+        width: 95%; /* Maximize width usage on very small screens */
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+    }
+
+    .left-info-text h3 {
+        font-size: 16px;
+    }
+
+    .left-info-text p,
+    .box p,
+    .box li {
+        font-size: 14px;
+    }
+
+    .box img {
+        height: 150px; /* Make images smaller on mobile */
+    }
+
+    pre {
+        padding: 0.75rem;
+        font-size: 12px; /* Smaller font size for code on mobile */
+    }
+}
     }
   </style>
 </head>
@@ -669,6 +816,48 @@
             <img src="../../static/img/telco/CatBoost.png" alt="CatBoost">
         </div>        
     </div>
+
+    <div class="info-box">
+        <div class="left-info-text">
+            <h3>🏆 Best Model So Far</h3>
+            <p>After training multiple models we can conclude that there’s no one-size-fits-all <strong>“best” model</strong> — each has strengths depending on the goal:</p>
+            <ul>
+                <li>- ✅ <span class="strong-blue"><u>Logistic Regression</u></span> achieved the highest ROC AUC (0.83) and best recall, making it <strong>ideal for catching the most churn cases.</strong></li><br>
+                <li>- ✅ <span class="strong-blue"><u>Random Forest</u></span> had the highest accuracy (79.5%), precision, and F1 score — <span class="strong-green">a strong balance for overall performance.</span></li><br>
+                <li>- ✅ <span class="strong-blue"><u>CatBoost</u></span> offered close performance, while also handling categorical features natively and <strong>providing clear feature importance.</strong></li>
+            </ul>
+        </div>
+        <div class="right-info-pic">
+            <img src="../../static/img/telco/ROC_curve.png" alt="Best Model">
+        </div>                
+    </div>
+
+    <div class="heading_h2">
+        <h2>🎯 Recommendation:</h2>
+    </div>
+    <div class="grid-box-3">
+        <div class="box">
+            <h3>Logistic Regression</h3>
+            <p>Choose <span class="strong-blue"><u>Logistic Regression</u></span> if the goal is to catch more churners (high recall).</p>
+        </div>
+        <div class="box">
+            <h3>Random Forest</h3>
+            <p>Choose <span class="strong-blue"><u>Random Forest</u></span> if you want balanced performance across precision, accuracy, and F1.</p>
+        </div>
+        <div class="box">
+            <h3>CatBoost</h3>
+            <p>Choose <span class="strong-blue"><u>CatBoost</u></span> if you prefer a modern, interpretable model that’s great with messy categorical data.</p>
+        </div>
+        <div class="box">
+            <p>For business goals focused on <strong>catching as many churn cases as possible</strong>, we recommend using the <span class="strong-blue"><u>Logistic Regression</u></span> model. It provides the best recall and ROC AUC, ensuring we identify most at-risk customers.</p>
+        </div>
+        <div class="box">
+            <p>However, for a balanced approach that also considers precision and overall accuracy, the <span class="strong-blue"><u>Random Forest</u></span> model is a strong contender. It can be used for targeted marketing and retention strategies.</p>
+        </div>
+        <div class="box">
+            <p>Ultimately, the choice of model should align with specific business objectives — whether that’s maximizing retention, minimizing costs, or balancing both.</p>
+        </div>
+    </div>
 </div>
 
 <footer style="text-align: center; padding: 20px; background-image: linear-gradient(to right, rgb(4 8 18), rgb(48, 97, 215)); color: white;">
@@ -697,3 +886,12 @@
 
 </body>
 </html>
+
+
+
+
+<!-- <h3>🎯 Recommendation:</h3>
+            <p>For business goals focused on <strong>catching as many churn cases as possible</strong>, we recommend using the <span class="strong-blue"><u>Logistic Regression</u></span> model. It provides the best recall and ROC AUC, ensuring we identify most at-risk customers.</p>
+            <p>However, for a balanced approach that also considers precision and overall accuracy, the <span class="strong-blue"><u>Random Forest</u></span> model is a strong contender. It can be used for targeted marketing and retention strategies.</p>
+            <p>Ultimately, the choice of model should align with specific business objectives — whether that’s maximizing retention, minimizing costs, or balancing both.</p>            
+         -->
