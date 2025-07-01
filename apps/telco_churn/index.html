@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jetbrains-mono@latest/css/jetbrains-mono.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fira-code@latest/css/fira-code.min.css">
+  <title>Visualization Showcase</title>
+  <style>
+    
+    /* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap'); */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+
+    body {
+        margin:0;
+        margin-top: 95px;
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f4f4f4;
+    }
+
+
+    /* Global */
+
+    h2{
+        color: rgb(48, 97, 215);
+        font-family: 'Roboto';
+        text-align: center;
+        font-size: xx-large;
+        font-weight: 300;
+        padding-top: 0.45rem;
+        padding-bottom: 0.45rem;
+    }
+    
+    strong { 
+        font-weight: 400;
+        /* color: rgb(48, 97, 215); */
+        color: rgb(215 95 48);
+    }
+
+    .strong-red{
+        font-weight: 400;
+        color: rgb(215 48 48);
+    }
+    .strong-green{
+        font-weight: 400;
+        color: #0a840a;
+    }
+
+    hr.dashed {
+        border-top: 1px solid #bbb;        
+    }
+
+    code, pre {
+        font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Courier New', monospace;
+        font-size: 14px;
+        background-color: #f5f5f5;
+        padding: 1rem;
+        border-radius: 12px;
+        display: block;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        color: #2b2b2b;
+    }
+
+    .code-comment {color: #888; /* Grayish green for comments */}
+
+    .code-keyword {color: #800080; /* Purple for keywords like import, as */}
+
+    .code-variable {color: #000; /* Black for variables/function names */}
+    
+    .code-string {color: #d14; /* Red for strings */}
+
+    .code-function-call {color: #000; /* Black for function calls */}
+
+    .code-parentheses {color: #000; /* Black for parentheses */}
+
+    .code-operator {color: #000; /* Black for operators */}
+
+    /* SQL Code Syntax Highlighting */
+
+    .sql-code-comment {color: #888; /* Grayish green for comments (e.g., -- or */}
+
+    .sql-code-keyword {
+        color: #800080; /* Purple for SQL keywords (e.g., SELECT, FROM, WHERE, INSERT, INTO, UPDATE, DELETE, CREATE, TABLE, ALTER, JOIN, ON, AND, OR, NOT, etc.) */
+        font-weight: bold; /* Keywords often stand out more */
+    }
+
+    .sql-code-function {color: #0000FF; /* Blue for built-in SQL functions (e.g., COUNT, SUM, AVG, MAX, MIN, NOW, GETDATE, CONCAT, SUBSTRING) */}
+
+    .sql-code-string {color: #f96d29; /* Red for string literals (e.g., 'text', '2023-01-01') */}
+
+    .sql-code-number {color: #1a1aa6; /* A distinct color for numeric literals (e.g., 123, 45.67) */}
+
+    .sql-code-identifier {color: #000; /* Black for database, table, column names (identifiers) */}
+
+    .sql-code-operator {color: #000; /* Black for operators (=, <, >, >=, <=, <>, !=, +, -, *, /, LIKE, IN, BETWEEN, IS NULL) */}
+
+    .sql-code-parentheses {color: #000; /* Black for parentheses ( ) */}
+
+    .sql-code-datatype {color: #4B0082; /* Indigo/dark purple for data types (e.g., INT, VARCHAR, DATE, BOOLEAN, DECIMAL) */}
+
+    .sql-code-alias {color: #006400; /* Dark green for aliases (e.g., AS alias_name) */}
+
+    
+    /* Python Code Syntax Highlighting */
+        .python-comment { color: #888; } /* Grayish green for comments */
+        .python-keyword { color: #800080; font-weight: bold; } /* Purple for keywords (e.g., import, as, True, False, None, print, def, class, return, if, else, for, while) */
+        .python-function { color: #0000FF; } /* Blue for built-in functions (e.g., print, len, sum, max, min, type) */
+        .python-method { color: #0000CD; } /* Medium blue for object methods (e.g., .value_counts(), .sum(), .count()) */
+        .python-string { color: #f96d29; } /* Red for string literals */
+        .python-number { color: #1a1aa6; } /* A distinct color for numeric literals */
+        .python-variable { color: #000; } /* Black for variable names */
+        .python-operator { color: #000; } /* Black for operators (=, +, -, *, /, %, ==, !=, <, >, <=, >=) */
+        .python-parentheses { color: #000; } /* Black for parentheses ( ) */
+        .python-bracket { color: #000; } /* Black for brackets [ ] */
+
+    /* navbar */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000; /* High enough to stay on top */
+        background-image: linear-gradient(to right, rgb(4 8 18), rgb(48, 97, 215));
+        color: white;
+        padding: 20px 0;
+        border-bottom: #767676 4.5px solid;
+    }
+
+    .nav-container {
+      width: 95%;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .left-button {
+        background-color: white;
+        color: black;
+        padding: 10px 20px;
+        border-radius: 999px;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        letter-spacing: 5px;
+        font-family: 'Roboto';
+        color: rgb(48, 97, 215);        
+        font-weight: 300;
+    }
+
+    .right-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: 'Roboto';
+        font-weight: 300;
+        letter-spacing: 4px;
+        font-size: medium;
+    }
+
+    .right-info-text {
+      text-align: right;
+      font-size: 14px;
+    }
+
+    .right-info img {
+      width: 40px;
+      height: 50px;
+      object-fit: contain;
+    }
+
+    /* Try section */
+    .selected-section {
+        border-bottom: 1px solid grey;
+    }
+
+
+    .selector-container {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        background-color: white;
+    }
+
+    .selector-container button {
+        background-color: white;
+        color: rgb(48, 97, 215);        
+        padding: 10px 20px;
+        border-radius: 999px;
+        border: none;
+        font-size: large;
+        cursor: pointer;
+        font-family: 'Roboto';
+        letter-spacing: 2.5px;
+        font-weight: 300;        
+    }
+
+    .btn {
+        border: none;
+        padding: 1em;
+        background: #eee;
+        position: relative; /* Needed for pseudo-element */
+    }
+
+    /* Add a vertical border on the right side of the first button */
+    .btn:first-child::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1px;
+        height: 100%;
+        background: #ccc;
+    }
+
+    .btn.active {
+      background-color: #f4f4f4; /* or any color */
+    }
+
+    /* Section styles */
+    .info-box{        
+        width: 80%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 2rem;
+        justify-content: center;        
+        justify-items: center;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+    }
+    .info-box:hover{
+        transform: translateY(-5px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .left-info-text {        
+        font-family: 'Roboto';
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    .left-info-text h3{
+        color: rgb(48, 97, 215);
+        font-size: 20px;        
+        font-weight: 400;
+    }
+    .left-info-text p{        
+        color: #333;
+        font-size: 18px;
+    }
+
+    .right-info-pic {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .right-info-pic img {        
+        height: 350px;
+        border-radius: 20px;
+    }    
+
+    /* Grid Containers for Cards */
+    .grid-box-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        width: 83%;
+        margin: auto;
+        margin-bottom: 2rem;
+    }
+    .grid-box-2 h3 {
+        color: rgb(48, 97, 215);
+        font-size: 20px;
+        font-weight: 400;
+        text-align: center;        
+    }
+    .grid-box-3{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        width: 83%;
+        margin: auto;
+        margin-bottom: 2rem;
+    }
+    .grid-box-3 h3 {
+        color: rgb(48, 97, 215);
+        font-size: 20px;
+        font-weight: 400;
+        text-align: center;        
+    }
+    .box{
+        height: 100%;
+        padding: 15px;
+        border-radius: 10px;
+        background-color: white;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-sizing: border-box;
+    }
+    .box:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .box p {
+        font-family: 'Roboto';
+        color: #333;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    .box li{
+        margin-top: 3px;
+        list-style: none;
+        font-family: 'Roboto';
+    }  
+    .box img{
+        height: 200px;
+        margin:auto;
+        display: block;
+    }
+    
+    .dashboard_tableau{
+        width: 83%;
+        margin: auto;        
+        margin-bottom: 2rem;
+        background-color: white;
+        padding-top: 2rem;
+        border-radius: 20px;
+        padding-bottom: 2rem;
+    }
+
+    .heading_h2{
+        width: 83%;
+        margin: auto;
+        text-align: center;
+        margin-top: 2rem;            
+        background-color: white;
+        border-radius: 20px;
+    }
+    
+
+    @media (max-width: 600px) {
+      .container {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .right-info-text {
+        text-align: center;
+        font-size: 13px;
+      }
+
+      .left-button {
+        font-size: 13px;
+        padding: 8px 16px;
+      }
+
+      .right-info img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="nav-container">
+      <button class="left-button">Customer Churn Analysis Project</button>
+      <div class="right-info">
+        <div class="right-info-text">A Lalit Kumar<br>Production</div>
+        <img src="../../static/img/telco/nav-img2.png" alt="Lalit Icon" />
+      </div>
+    </div>
+  </div>
+
+<div class="selected-section">
+    <div class="selector-container">
+        <button onclick="showSection('business')" class="btn">Business View</button>
+        <button onclick="showSection('tech')" class="btn">Tech View</button>
+    </div>
+</div>
+
+<!-- Business Page -->
+<div id="business" class="section">
+    <div class="heading_h2"><h2>🧠 Understanding Why Customers Leave — And What We Can Do About It</h2></div>
+    <div class="info-box">
+        <div class="left-info-text">            
+        <h3>What is Customer Churn? And why Is Churn a Problem for Telcos?</h3>
+        <p>Customer churn, also known as customer attrition, refers to the <strong>loss of customers or subscribers from a business.</strong> In the context of telecommunications (telcos), churn is a significant concern because it directly impacts revenue and profitability. High churn rates can indicate dissatisfaction with services, leading to increased costs for acquiring new customers to replace those lost.</p>
+        </div>
+        <div class="right-info-pic">
+            <img src="../../static/img/telco/what_is_churn.png" alt="Churn Icon" />
+        </div>
+    </div>
+
+    <!-- Grid Box for "Our Goal" and "Analysis" -->
+    <div class= "grid-box-2">
+        <div class="box">
+            <h3>Our Goal</h3>
+            <p>To find out <strong>why customers leave a telecom service —</strong> and help the business stop that from happening. Churn is costly, and understanding the reasons lets companies make smarter decisions and keep their users happy.</p>
+        </div>
+        <div class="box">
+            <h3>Analysis</h3>
+            <p>We studied real customer data — <strong>like monthly bills, internet service, and contract type —</strong> and looked for patterns. Using simple visuals and smart techniques, we found <strong>which customers are more likely to leave</strong> and what their behavior looks like.</p>
+        </div>
+    </div>
+
+    <hr class="dashed">
+
+    <div class="heading_h2"><h2>📊 Tableau Dashboard: Customer Churn Analysis</h2></div>
+    <div class="dashboard_tableau" section="dashboard">        
+        <div class='tableauPlaceholder' id='viz1751203687302' style='margin: auto; position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Te&#47;Telco__Churn_Dashbaord&#47;ChurnAnalysisDashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Telco__Churn_Dashbaord&#47;ChurnAnalysisDashboard' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Te&#47;Telco__Churn_Dashbaord&#47;ChurnAnalysisDashboard&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1751203687302');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1080px';vizElement.style.height='677px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1080px';vizElement.style.height='677px';} else { vizElement.style.width='100%';vizElement.style.height='1977px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    </div>
+
+    <div class="grid-box-2">        
+        <div class="box">
+            <h3>Key Factors Behind Customer Churn</h3>
+            <p>Customers were more likely to churn if:</p>
+            <ul>
+                <li>- They had <strong>month-to-month contracts</strong></li>
+                <li>- They used <strong>Fiber Optic internet</strong></li>
+                <li>- They had paid via <strong>Electronic Check</strong></li>
+                <li>- They had <strong>higher monthly charges</strong></li>
+                <li>- They lacked support features like <strong>Tech Support </strong>or <strong>Online Security</strong></li>
+            </ul>
+            <p>Meanwhile, longer tenure and yearly contracts helped reduce churn.</p>
+        </div>
+        <div class="box">
+            <h3>Business Impact & Final Insights</h3>
+            <p>These findings can help the business:</p>
+            <ul>
+                <li>- <strong>Retain customers </strong>by promoting long-term plans</li>
+                <li>- Offer <strong>better support services </strong>to high-risk users</li>
+                <li>- <strong>Target marketing </strong>to users likely to leave</li>
+                <li>- Save on acquisition costs by reducing churn</li>                
+            </ul>
+            <p>We also <span class="strong-green">tested machine learning models to predict churn</span> with solid accuracy — enabling action before customers even leave.</p>
+        </div>
+    </div>   
+
+    <hr class="dashed">
+
+    <!-- What can businesses do -->
+     <div class="heading_h2"><h2>🛠️ Actions to Reduce Churn: What Can Telcos Actually Do?</h2></div>
+     <div class="grid-box-3">
+        <div class="box">
+            <h3>🗓️ Offer Long-Term Contracts</h3>
+            <p>Give discounts or perks for yearly plans — churn is lower among long-term subscribers.</p>
+        </div>
+        <div class="box">
+            <h3>📱 Improve Tech Support & Security</h3>
+            <p>Customers lacking support features like online security or helpdesk tend to leave. Make support accessible and proactive.</p>
+        </div>
+        <div class="box">
+            <h3>💸 Address High Monthly Charges</h3>
+            <p>High bills were a churn trigger. Introduce budget-friendly plans or loyalty discounts.</p>
+        </div>
+        <div class="box">
+            <h3>🕵🏻 Review Internet Services</h3>
+            <p>Fiber optic users showed higher churn — audit installation quality, downtime, and customer satisfaction.</p>
+        </div>
+        <div class="box">
+            <h3>🎯 Target High-Risk Segments</h3>
+            <p>Use churn prediction models to flag users at risk and intervene early with offers or engagement.</p>
+        </div>
+        <div class="box">
+            <h3>😀 Simplify Billing Methods</h3>
+            <p>Users paying via Electronic Check had the highest churn. Make online/card payments easy and encourage adoption.</p>
+        </div>
+     </div>
+
+    <hr class="dashed">
+
+    <!-- The Conclusion Section -->
+    <div class="heading_h2"><h2>✅ 📌 Conclusion: What Did We Learn?</h2></div>
+    <div class="info-box">
+        <div class="left-info-text">            
+        <h3>💡 Final Takeaway: Turning Insights Into Action</h3>
+        <p>Our analysis of customer churn not only revealed which customers are likely to leave, but more importantly, <span class="strong-red">why</span> they do.<br><br>By combining data-driven modeling with business context, we’ve uncovered key patterns that telecom companies can act on — from improving technical support to targeting high-risk customer segments more effectively.<br><br>The insights gained here aren’t just numbers — they’re <span class="strong-green">actionable levers</span> for reducing churn, increasing customer satisfaction, and driving long-term business growth.<br><br>In today’s competitive market, making informed, <strong>customer-centric decisions is no longer optional — it’s essential.</strong></p>
+        </div>
+        <div class="right-info-pic">
+            <img src="../../static/img/telco/conclusion_1.png" alt="Conclusion Icon" />
+        </div>
+    </div>
+    
+    
+</div>
+
+<!-- Tech Page -->
+<div id="tech" class="section" style="display:none;">
+    <div class="heading_h2"><h2>🕵️ Behind the Dashboard — From Raw Data to Real Insights</h2></div>
+  <!-- All the technical breakdown here -->
+
+  <!-- SQL SECTION -->
+   <div class="info-box">
+        <div class="left-info-text">            
+        <h3>📁 Data Preparation with SQL</h3>
+        <p>We began by importing raw customer data from CSV files into a SQL environment. Then we:</p>
+        <ul>
+            <li>- <strong>Removed nulls and incorrect values</strong> to ensure clean and reliable records.</li>
+            <li>- Engineer new columns like <strong>churn labels</strong> and <strong>AvgMonthlySpend</strong></li>
+            <li>- Create early summaries for churn vs non-churn users</li>
+            <li>- <strong>Generated summary tables</strong> to compare churn vs. non-churn groups across tenure, internet type, and payment method.</li>
+            <li>- These SQL queries gave us an initial sense of patterns and helped reduce noise before further analysis.</li>
+        </ul>
+            <p>SQL helped us transform messy data into a clean, structured dataset ready for further EDA.</p>
+            <p>Here’s a sample SQL query that shows how we prepared the data:</p>        
+        </div>
+        <div class="right-info-pic">     
+        <pre>
+<span class="sql-code-comment">-- Creating new columns for analysis</span>
+<span class="sql-code-keyword">ALTER</span> <span class="sql-code-keyword">TABLE</span> <span class="sql-code-identifier">customers</span> <span class="sql-code-keyword">ADD</span> <span class="sql-code-keyword">COLUMN</span> <span class="sql-code-identifier">TotalCharges_clean</span> <span class="sql-code-datatype">REAL</span>;
+<span class="sql-code-keyword">UPDATE</span> <span class="sql-code-identifier">customers</span> <span class="sql-code-keyword">SET</span> <span class="sql-code-identifier">TotalCharges_clean</span> <span class="sql-code-operator">=</span> <span class="sql-code-function">CAST</span>(<span class="sql-code-identifier">TotalCharges</span> <span class="sql-code-keyword">AS</span> <span class="sql-code-datatype">REAL</span>);
+
+<!-- <span class="sql-code-comment">-- Adding binary flag for churn</span>
+<span class="sql-code-keyword">ALTER</span> <span class="sql-code-keyword">TABLE</span> <span class="sql-code-identifier">customers</span> <span class="sql-code-keyword">ADD</span> <span class="sql-code-keyword">COLUMN</span> <span class="sql-code-identifier">ChurnFlag</span> <span class="sql-code-datatype">INT</span>;
+<span class="sql-code-keyword">UPDATE</span> <span class="sql-code-identifier">customers</span> <span class="sql-code-keyword">SET</span> <span class="sql-code-identifier">ChurnFlag</span> <span class="sql-code-operator">=</span> <span class="sql-code-keyword">CASE</span> <span class="sql-code-keyword">WHEN</span> <span class="sql-code-identifier">Churn</span> <span class="sql-code-operator">=</span> <span class="sql-code-string">'Yes'</span> <span class="sql-code-keyword">THEN</span> <span class="sql-code-number">1</span> <span class="sql-code-keyword">ELSE</span> <span class="sql-code-number">0</span> <span class="sql-code-keyword">END</span>; -->
+
+<span class="sql-code-comment">-- Adding average monthly spend</span>
+<span class="sql-code-keyword">ALTER</span> <span class="sql-code-keyword">TABLE</span> <span class="sql-code-identifier">customers</span> <span class="sql-code-keyword">ADD</span> <span class="sql-code-keyword">COLUMN</span> <span class="sql-code-identifier">AvgMonthlySpend</span> <span class="sql-code-datatype">REAL</span>;
+<span class="sql-code-keyword">UPDATE</span> <span class="sql-code-identifier">customers</span> <span class="sql-code-keyword">SET</span> <span class="sql-code-identifier">AvgMonthlySpend</span> <span class="sql-code-operator">=</span> <span class="sql-code-identifier">TotalCharges_clean</span> <span class="sql-code-operator">/</span> <span class="sql-code-function">NULLIF</span>(<span class="sql-code-identifier">tenure</span>, <span class="sql-code-number">0</span>);
+
+<span class="sql-code-comment">-- Calculating Churn Rate by tenure</span>
+<span class="sql-code-keyword">SELECT</span>
+    <span class="sql-code-keyword">CASE</span>
+        <span class="sql-code-keyword">WHEN</span> <span class="sql-code-identifier">tenure</span> <span class="sql-code-operator">&lt;</span> <span class="sql-code-number">12</span> <span class="sql-code-keyword">THEN</span> <span class="sql-code-string">'New'</span>
+        <span class="sql-code-keyword">WHEN</span> <span class="sql-code-identifier">tenure</span> <span class="sql-code-operator">&lt;</span> <span class="sql-code-number">36</span> <span class="sql-code-keyword">THEN</span> <span class="sql-code-string">'Mid-term'</span>
+        <span class="sql-code-keyword">ELSE</span> <span class="sql-code-string">'Loyal'</span>
+    <span class="sql-code-keyword">END</span> <span class="sql-code-keyword">AS</span> <span class="sql-code-alias">TenureGroup</span>,
+    <span class="sql-code-function">COUNT</span><span class="sql-code-parentheses">(</span><span class="sql-code-operator">*</span><span class="sql-code-parentheses">)</span> <span class="sql-code-keyword">AS</span> <span class="sql-code-alias">Total</span>,
+    <span class="sql-code-function">ROUND</span><span class="sql-code-parentheses">(</span><span class="sql-code-function">AVG</span><span class="sql-code-parentheses">(</span><span class="sql-code-identifier">MonthlyCharges</span><span class="sql-code-parentheses">)</span>, <span class="sql-code-number">2</span><span class="sql-code-parentheses">)</span> <span class="sql-code-keyword">AS</span> <span class="sql-code-alias">AvgCharge</span>,
+    <span class="sql-code-function">ROUND</span><span class="sql-code-parentheses">(</span><span class="sql-code-function">SUM</span><span class="sql-code-parentheses">(</span><span class="sql-code-keyword">CASE</span> <span class="sql-code-keyword">WHEN</span> <span class="sql-code-identifier">Churn</span> <span class="sql-code-operator">=</span> <span class="sql-code-string">'Yes'</span> <span class="sql-code-keyword">THEN</span> <span class="sql-code-number">1</span> <span class="sql-code-keyword">ELSE</span> <span class="sql-code-number">0</span> <span class="sql-code-keyword">END</span><span class="sql-code-parentheses">)</span> <span class="sql-code-operator">*</span> <span class="sql-code-number">100.0</span><span class="sql-code-operator">/</span><span class="sql-code-function">COUNT</span><span class="sql-code-parentheses">(</span><span class="sql-code-operator">*</span><span class="sql-code-parentheses">)</span>, <span class="sql-code-number">2</span><span class="sql-code-parentheses">)</span> <span class="sql-code-keyword">AS</span> <span class="sql-code-alias">ChurnRate</span>
+<span class="sql-code-keyword">FROM</span> <span class="sql-code-identifier">customers</span>
+<span class="sql-code-keyword">GROUP BY</span> <span class="sql-code-alias">TenureGroup</span>;
+        </pre>                    
+        </div>
+    </div>
+
+    <hr class="dashed">
+    <br><br>
+    <!-- Python Section -->
+    <div class="info-box">
+        <div class="left-info-text">            
+        <h3>📊 Exploratory Data Analysis (EDA) with Python</h3>
+        <p>After cleaning the data in SQL, we moved to Python for deeper analysis. We used libraries like Pandas, NumPy, and Matplotlib to:</p>
+        <ul>
+            <li>- Load the cleaned dataset from SQL into a Pandas DataFrame</li>
+            <li>- Perform exploratory data analysis (EDA) to visualize churn patterns</li>
+            <li>- Uncovered correlations between churn and key features like:</li>
+            <ul>
+                <li>Contract type</li>
+                <li>Internet service type</li>
+                <li>Payment method</li>
+                <li>Monthly charges</li>
+            </ul>
+            <li>- Bucketed tenure into ranges (0–12, 13–24 months, etc.) to calculate churn rates more clearly.</li>
+            <li>- Plotted distributions to visually compare churn and non-churn users.</li>
+            <li>- Segmented high-risk customers, helping shape targeting strategies later</li>
+            <li>- Build machine learning models to predict churn risk</li>
+        </ul>
+            <p>Python allowed us to apply advanced analytics and machine learning techniques on top of the structured data.</p>
+            <p>Here’s a sample code snippet showing how we loaded the data and performed EDA:</p>        
+        </div>
+        <div class="right-info-pic">
+        <pre>
+<span class="python-comment">#Overall Churn Rate</span>
+<span class="python-variable">churn_rate</span> <span class="python-operator">=</span> <span class="python-variable">df</span><span class="python-bracket">[</span><span class="python-string">'Churn'</span><span class="python-bracket">]</span>.<span class="python-method">value_counts</span><span class="python-parentheses">(</span><span class="python-variable">normalize</span> <span class="python-operator">=</span> <span class="python-keyword">True</span><span class="python-parentheses">)</span> <span class="python-operator">*</span> <span class="python-number">100</span>
+<span class="python-function">print</span><span class="python-parentheses">(</span><span class="python-string">"\nOverall Churn Rate:"</span><span class="python-parentheses">)</span>
+<span class="python-function">print</span><span class="python-parentheses">(</span><span class="python-variable">churn_rate</span><span class="python-parentheses">)</span>
+
+
+<span class="python-comment">#Average Tenure—</span>
+<span class="python-variable">average_tenure</span> <span class="python-operator">=</span> <span class="python-variable">df</span><span class="python-bracket">[</span><span class="python-string">'tenure'</span><span class="python-bracket">]</span>.<span class="python-method">sum</span><span class="python-parentheses">(</span><span class="python-parentheses">)</span> <span class="python-operator">/</span> <span class="python-variable">df</span><span class="python-bracket">[</span><span class="python-string">'tenure'</span><span class="python-bracket">]</span>.<span class="python-method">count</span><span class="python-parentheses">(</span><span class="python-parentheses">)</span>
+<span class="python-function">print</span><span class="python-parentheses">(</span><span class="python-string">"\nAverage Tenure:"</span><span class="python-parentheses">)</span>
+<span class="python-function">print</span><span class="python-parentheses">(</span><span class="python-variable">average_tenure</span><span class="python-parentheses">)</span>            
+
+
+<span class="python-comment"># For bucketing MontlyCharges into Low, Medium, High</span>
+<span class="python-keyword">def</span> <span class="python-function">charge_bucket</span><span class="python-parentheses">(</span><span class="python-variable">charge</span><span class="python-parentheses">)</span>:
+    <span class="python-keyword">if</span> <span class="python-variable">charge</span> <span class="python-operator">&lt;</span> <span class="python-number">45</span>:
+        <span class="python-keyword">return</span> <span class="python-string">'Low'</span>
+    <span class="python-keyword">elif</span> <span class="python-variable">charge</span> <span class="python-operator">&lt;</span> <span class="python-number">80</span>:
+        <span class="python-keyword">return</span> <span class="python-string">'Medium'</span>
+    <span class="python-keyword">else</span>:
+        <span class="python-keyword">return</span> <span class="python-string">'High'</span>
+<span class="python-variable">df</span><span class="python-bracket">[</span><span class="python-string">'ChargeGroup'</span><span class="python-bracket">]</span> <span class="python-operator">=</span> <span class="python-variable">df</span><span class="python-bracket">[</span><span class="python-string">'MonthlyCharges'</span><span class="python-bracket">]</span>.<span class="python-method">apply</span><span class="python-parentheses">(</span><span class="python-variable">charge_bucket</span><span class="python-parentheses">)</span>
+<span class="python-variable">ChargeGroup_churn</span> <span class="python-operator">=</span> <span class="python-function">churn_rate_by_category</span><span class="python-parentheses">(</span><span class="python-variable">df</span>, <span class="python-string">'ChargeGroup'</span><span class="python-parentheses">)</span>
+        </pre>        
+        </div>
+    </div> 
+    <div class="grid-box-3">
+        <div class="box">
+            <h3>Churn Rate By Contract Type</h3>
+            <img src="../../static/img/telco/ChurnRateByContract.png" alt="Churn By Contract" />
+        </div>
+        <div class="box">
+            <h3>Churn Rate By Monthly Charges</h3>
+            <img src="../../static/img/telco/ChurnRateByMontlyCharge.png" alt="Churn By Contract" />
+        </div>
+        <div class="box">
+            <h3>Churn Rate By Churn Rate By Tech Support</h3>
+            <img src="../../static/img/telco/ChurnRateByTech.png" alt="Churn By Contract" />
+        </div>
+    </div>   
+    <hr class="dashed">
+    <br><br>
+    <!-- Machine Learning Section -->
+    <div class="info-box">
+        <div class="left-info-text">
+        <h3>🤖 Machine Learning for Churn Prediction & Modeling</h3>
+        <p>We trained multiple models using Scikit-learn and CatBoost:</p>
+        <ul>
+            <li>- <strong>Logistic Regression</strong> for baseline predictions</li>
+            <li>- <strong>Random Forest</strong> for feature importance</li>
+            <li>- <strong>CatBoost</strong> for handling categorical features effectively</li>
+            <li>- Evaluated them using <strong>ROC AUC, F1, Recall, Precision</strong></li>
+            <li>- Selected <strong>Random Forest</strong> as the best trade-off for business goals</li>            
+            <li>- Delivered business recommendations based on top churn drivers (e.g., contract type, support calls)</li>
+            <li>- Performed extensive feature engineering (e.g., tenure buckets, average transaction frequency)</li>
+        </ul>
+        <p>Here’s a sample code snippet showing how we trained the models and evaluated their performance:</p>
+        </div>
+        <div class="right-info-pic">
+        <pre>
+<span class="python-comment"># Create comparison metrics table</span>
+<span class="python-keyword">def</span> <span class="python-function">get_model_metrics</span><span class="python-parentheses">(</span><span class="python-variable">y_true</span>, <span class="python-variable">y_pred</span>, <span class="python-variable">y_proba</span><span class="python-parentheses">)</span>:
+    <span class="python-keyword">return</span> <span class="python-bracket">{</span>
+        <span class="python-string">'Accuracy'</span><span class="python-operator">:</span> <span class="python-function">accuracy_score</span><span class="python-parentheses">(</span><span class="python-variable">y_true</span>, <span class="python-variable">y_pred</span><span class="python-parentheses">)</span>,
+        <span class="python-string">'Precision'</span><span class="python-operator">:</span> <span class="python-function">precision_score</span><span class="python-parentheses">(</span><span class="python-variable">y_true</span>, <span class="python-variable">y_pred</span><span class="python-parentheses">)</span>,
+        <span class="python-string">'Recall'</span><span class="python-operator">:</span> <span class="python-function">recall_score</span><span class="python-parentheses">(</span><span class="python-variable">y_true</span>, <span class="python-variable">y_pred</span><span class="python-parentheses">)</span>,
+        <span class="python-string">'F1 Score'</span><span class="python-operator">:</span> <span class="python-function">f1_score</span><span class="python-parentheses">(</span><span class="python-variable">y_true</span>, <span class="python-variable">y_pred</span><span class="python-parentheses">)</span>,
+        <span class="python-string">'ROC AUC'</span><span class="python-operator">:</span> <span class="python-function">roc_auc_score</span><span class="python-parentheses">(</span><span class="python-variable">y_true</span>, <span class="python-variable">y_proba</span><span class="python-parentheses">)</span>
+    <span class="python-bracket">}</span>
+
+
+<span class="python-comment"># Collect metrics for each model</span>
+<span class="python-variable">metrics</span> <span class="python-operator">=</span> <span class="python-bracket">{</span>
+    <span class="python-string">'Logistic Regression'</span><span class="python-operator">:</span> <span class="python-function">get_model_metrics</span><span class="python-parentheses">(</span><span class="python-variable">y_test</span>, <span class="python-variable">y_pred_lr</span>, <span class="python-variable">y_proba_lr</span><span class="python-parentheses">)</span>,
+    <span class="python-string">'Random Forest'</span><span class="python-operator">:</span> <span class="python-function">get_model_metrics</span><span class="python-parentheses">(</span><span class="python-variable">y_test</span>, <span class="python-variable">y_pred_rf</span>, <span class="python-variable">y_proba_rf</span><span class="python-parentheses">)</span>,
+    <span class="python-string">'CatBoost'</span><span class="python-operator">:</span> <span class="python-function">get_model_metrics</span><span class="python-parentheses">(</span><span class="python-variable">y_test</span>, <span class="python-variable">y_pred_cb</span>, <span class="python-variable">y_proba_cb</span><span class="python-parentheses">)</span>
+<span class="python-bracket">}</span>
+
+
+<span class="python-comment"># Convert to DataFrame</span>
+<span class="python-variable">metrics_df</span> <span class="python-operator">=</span> <span class="python-variable">pd</span>.<span class="python-method">DataFrame</span><span class="python-parentheses">(</span><span class="python-variable">metrics</span><span class="python-parentheses">)</span>.<span class="python-method">T</span>.<span class="python-method">round</span><span class="python-parentheses">(</span><span class="python-number">4</span><span class="python-parentheses">)</span>
+<span class="python-function">print</span><span class="python-parentheses">(</span><span class="python-string">"\nModel Performance Comparison:"</span><span class="python-parentheses">)</span>
+<span class="python-function">print</span><span class="python-parentheses">(</span><span class="python-string">'metrics_df'</span><span class="python-parentheses">)</span>
+<span class="python-function">print</span><span class="python-parentheses">(</span><span class="python-variable">metrics_df</span><span class="python-parentheses">)</span>
+        </pre>
+        </div>
+    </div>    
+    <div class="grid-box-3">
+        <div class="box">
+            <h3>Logistic Regression</h3>
+            <img src="../../static/img/telco/LogisticRegression.png" alt="Logistic Regression">
+        </div>
+        <div class="box">
+            <h3>Random Forest</h3>
+            <img src="../../static/img/telco/RandomForest.png" alt="Random Forest">
+        </div>
+        <div class="box">
+            <h3>CatBoost</h3>
+            <img src="../../static/img/telco/CatBoost.png" alt="CatBoost">
+        </div>        
+    </div>
+</div>
+
+<footer style="text-align: center; padding: 20px; background-image: linear-gradient(to right, rgb(4 8 18), rgb(48, 97, 215)); color: white;">
+    Crafted by Lalit Kumar
+</footer>
+
+<script>
+//Selecting the Main data section
+  function showSection(sectionId) {
+    document.getElementById('business').style.display = sectionId === 'business' ? 'block' : 'none';
+    document.getElementById('tech').style.display = sectionId === 'tech' ? 'block' : 'none';
+  }
+
+//Making buttons to stay colored
+  document.addEventListener("DOMContentLoaded", function () {
+      const buttons = document.querySelectorAll(".btn");
+
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          buttons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+        });
+      });
+    });
+</script>
+
+</body>
+</html>
