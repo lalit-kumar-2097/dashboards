@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jetbrains-mono@latest/css/jetbrains-mono.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fira-code@latest/css/fira-code.min.css">
-  <title>Customer Churn Analysis</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jetbrains-mono@latest/css/jetbrains-mono.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fira-code@latest/css/fira-code.min.css">    
+    <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+    <title>Customer Churn Analysis</title>
   <style>
 
     
@@ -21,6 +22,13 @@
     }
 
 
+    .section{
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     /* Global */
 
     h2{
@@ -31,6 +39,7 @@
         font-weight: 300;
         padding-top: 0.45rem;
         padding-bottom: 0.45rem;
+        margin: auto;
     }
     
     strong { 
@@ -213,6 +222,7 @@
     .info-box{        
         width: 80%;
         margin: auto;
+        margin-top: 2rem;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 2rem;
@@ -222,7 +232,6 @@
         background-color: white;
         border-radius: 10px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        margin-bottom: 2rem;
     }
     .info-box:hover{
         transform: translateY(-5px);
@@ -265,7 +274,7 @@
         gap: 2rem;
         width: 83%;
         margin: auto;
-        margin-bottom: 2rem;
+        margin-top: 2rem;
     }
     .grid-box-2 h3 {
         color: rgb(48, 97, 215);
@@ -279,7 +288,7 @@
         gap: 2rem;
         width: 83%;
         margin: auto;
-        margin-bottom: 2rem;
+        margin-top: 2rem;
     }
     .grid-box-3 h3 {
         color: rgb(48, 97, 215);
@@ -319,7 +328,7 @@
     .dashboard_tableau{
         width: 83%;
         margin: auto;        
-        margin-bottom: 2rem;
+        margin-top: 2rem;
         background-color: white;
         padding-top: 2rem;
         border-radius: 20px;
@@ -472,6 +481,13 @@
         padding-top: 0px;
         padding-bottom: 0px;
     }
+    .dashboard_tableau{
+        max-height: 800px; /* Limit height for Tableau dashboard on mobile */
+    }
+    .tableauPlaceholder{
+        width: 100% !important; /* Ensure Tableau dashboard takes full width */
+        height: 600px !important; /* Set a fixed height for better visibility */
+    }
 
     .left-info-text h3 {
         font-size: 16px;
@@ -542,6 +558,7 @@
 
     <div class="heading_h2"><h2>📊 Tableau Dashboard: Customer Churn Analysis</h2></div>
     <div class="dashboard_tableau" section="dashboard">        
+        <!-- <div class='tableauPlaceholder' id='viz1751203687302' style='margin: auto; position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Te&#47;Telco__Churn_Dashbaord&#47;ChurnAnalysisDashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Telco__Churn_Dashbaord&#47;ChurnAnalysisDashboard' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Te&#47;Telco__Churn_Dashbaord&#47;ChurnAnalysisDashboard&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1751203687302');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1080px';vizElement.style.height='677px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1080px';vizElement.style.height='677px';} else { vizElement.style.width='100%';vizElement.style.height='1977px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script> -->
         <div class='tableauPlaceholder' id='viz1751203687302' style='margin: auto; position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Te&#47;Telco__Churn_Dashbaord&#47;ChurnAnalysisDashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Telco__Churn_Dashbaord&#47;ChurnAnalysisDashboard' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Te&#47;Telco__Churn_Dashbaord&#47;ChurnAnalysisDashboard&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1751203687302');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1080px';vizElement.style.height='677px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1080px';vizElement.style.height='677px';} else { vizElement.style.width='100%';vizElement.style.height='1977px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
     </div>
 
@@ -840,15 +857,15 @@
     </div>
 </div>
 
-<footer style="text-align: center; padding: 20px; background-image: linear-gradient(to right, rgb(4 8 18), rgb(48, 97, 215)); color: white;">
+<footer style="text-align: center; padding: 20px; background-image: linear-gradient(to right, rgb(4 8 18), rgb(48, 97, 215)); color: white; margin-top: 2rem;">
     Crafted by Lalit Kumar
 </footer>
 
 <script>
 //Selecting the Main data section
   function showSection(sectionId) {
-    document.getElementById('business').style.display = sectionId === 'business' ? 'block' : 'none';
-    document.getElementById('tech').style.display = sectionId === 'tech' ? 'block' : 'none';
+    document.getElementById('business').style.display = sectionId === 'business' ? 'flex' : 'none';
+    document.getElementById('tech').style.display = sectionId === 'tech' ? 'flex' : 'none';
   }
 
 //Making buttons to stay colored
