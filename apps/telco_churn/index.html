@@ -482,10 +482,14 @@
         padding-bottom: 0px;
     }
     .grid-box-2{
-        grid-template-columns: repeat(1, 1fr); /* Stack cards on small screens */
+        margin-bottom: 2rem; /* Add some space below the grid */
     }
     .dashboard_tableau{
+        margin-top:2rem;
         max-height: 800px; /* Limit height for Tableau dashboard on mobile */
+    }
+    .box{
+        overflow: hidden; /* Prevent overflow on small screens */
     }
     .tableauPlaceholder{
         width: 100% !important; /* Ensure Tableau dashboard takes full width */
