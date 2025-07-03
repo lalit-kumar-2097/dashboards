@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jetbrains-mono@latest/css/jetbrains-mono.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fira-code@latest/css/fira-code.min.css">    
+    <meta name="description" content="Customer Churn Analysis Project - A Lalit Kumar Production">
+    <link rel="icon" href="../../static/img/telco/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jetbrains-mono@latest/css/jetbrains-mono.min.css"> <!--Importing JetBrains Mono font for code -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fira-code@latest/css/fira-code.min.css">    <!--Importing JetBrains Mono font for code -->
     <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
     <title>Customer Churn Analysis</title>
   <style>
@@ -376,11 +378,10 @@
         grid-template-columns: 1fr; /* Stack cards on smaller screens */
         width: 90%; /* Adjust width for better fit */
     }
-
-    .box {
-        padding: 15px;
+    .grid-box-2 {
+        height: 620px; /* Add some space below the grid */
     }
-
+    
     .dashboard_tableau {
         width: 90%; /* Adjust width for better fit */
         padding: 1rem;
@@ -403,6 +404,11 @@
     .box p,
     .box li {
         font-size: 15px;
+    }
+    .tableauPlaceholder {
+        width: 100% !important; /* Ensure Tableau dashboard takes full width */
+        height: 600px !important; /* Set a fixed height for better visibility */
+        overflow: scroll;
     }
 }
 
@@ -481,17 +487,15 @@
         padding-top: 0px;
         padding-bottom: 0px;
     }
-    .grid-box-2{
+    .grid-box-2 {
         margin-bottom: 2rem; /* Add some space below the grid */
     }
-    .dashboard_tableau{
+    .dashboard_tableau {
         margin-top:2rem;
         max-height: 800px; /* Limit height for Tableau dashboard on mobile */
     }
-    .box{
-        overflow: hidden; /* Prevent overflow on small screens */
-    }
-    .tableauPlaceholder{
+    
+    .tableauPlaceholder {
         width: 100% !important; /* Ensure Tableau dashboard takes full width */
         height: 600px !important; /* Set a fixed height for better visibility */
     }
@@ -593,7 +597,6 @@
         </div>
     </div>   
 
-    <hr class="dashed">
 
     <!-- What can businesses do -->
      <div class="heading_h2"><h2>🛠️ Actions to Reduce Churn: What Can Telcos Actually Do?</h2></div>
@@ -746,15 +749,15 @@
     <div class="grid-box-3">
         <div class="box">
             <h3>Churn Rate By Contract Type</h3>
-            <img src="../../static/img/telco/ChurnRateByContract.png" alt="Churn By Contract" />
+            <img src="../../static/img/telco/ChurnRateByInternet.png" alt="Churn By Contract" />
         </div>
         <div class="box">
             <h3>Churn Rate By Monthly Charges</h3>
-            <img src="../../static/img/telco/ChurnRateByMontlyCharge.png" alt="Churn By Contract" />
+            <img src="../../static/img/telco/ChurnRateByMontlyCharge1.png" alt="Churn By Contract" />
         </div>
         <div class="box">
-            <h3>Churn Rate By Churn Rate By Tech Support</h3>
-            <img src="../../static/img/telco/ChurnRateByTech.png" alt="Churn By Contract" />
+            <h3>Churn Rate By Tech Support</h3>
+            <img src="../../static/img/telco/ChurnRateByTech1.png" alt="Churn By Contract" />
         </div>
     </div>   
     <hr class="dashed">
