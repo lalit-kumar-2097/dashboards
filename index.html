@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="../../static/css/nav.css">
     <script src="{% static 'js/script.js' %}"></script>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <title>Dashboard Repository</title>
@@ -12,8 +12,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
         body{
-            /* font: 15px/1.5 Arial, Helvetica sans-serif; */
-            font: 15px/1.5 Arial, Helvetica sans-serif;
+            font: 15px/1.5 Roboto;
             padding: 0;
             margin: 0;
             background-color: #f4f4f4;    
@@ -21,21 +20,11 @@
         }
 
 
-
         /* Global */
         .page-layout{
             width: 60%;
             margin: auto;
         }
-
-
-        /* header{
-            background: #35424a;
-            color: #ffffff;
-            padding-top: 30px;
-            min-height: 70px;
-            border-bottom: #e8491d 3px solid;    
-        } */
 
         header{
             background: rgb(48, 97, 215);
@@ -71,11 +60,6 @@
         }
 
         .container{
-            /* display: grid;
-            grid-template-columns: repeat(3, 1fr);            
-            grid-template-rows: repeat();
-            grid-gap: 1rem;
-            align-items: stretch; */
             display: grid;
             grid-template-columns: repeat(3, minmax(200px, 1fr));
             gap: 20px;
@@ -321,15 +305,16 @@
 
 <body>
     <main>
-        <nav>
-            <div class="page-layout">
-                <p id="branding">My Data Visualization Showcase</p>
-                <div class="nav-img">
-                <img src="static/img/nav-img1.png" alt="">
-                <p>A Lalit Kumar Production</p>
-                </div>            
-            </div>    
-        </nav>    
+        <!-- Navbar -->
+        <div class="navbar">
+            <div class="nav-container">
+            <button class="left-button">CSV/TSV Normalizer</button>
+                <div class="right-info">
+                    <div class="right-info-text">A Lalit Kumar<br>Production</div>
+                      <img src="../../static/img/nav-img2.png" alt="Lalit Icon" />
+                </div>
+            </div>
+        </div>
 
 
         <section id="main-data">
